@@ -7,7 +7,7 @@ If you get stacked with this example try to deliver at least whatever part you c
 If you can't do the Backbone part you may finish d3 part might or vice versa :)
 
 If you are not familiar with github you can download ZIP files here
-https://github.com/mklapal/hiring_front2/archive/master.zip
+https://github.com/mklapal/hiring_front3/archive/master.zip
 and then send us the test back via email.
 
 # Create a d3.js graph in existing js app
@@ -34,7 +34,7 @@ Hope you enjoy it :)
 
 # Original README
 
-see original repo on [https://github.com/davidsulc/structuring-backbone-with-requirejs-and-marionette] (https://github.com/davidsulc/structuring-backbone-with-requirejs-and-marionette) 
+see original repo on https://github.com/davidsulc/marionette-gentle-introduction
 
 # Useful links
 
@@ -47,16 +47,12 @@ https://lostechies.com/derickbailey/
 
 ## Trigger new page with the dataviz
 
-See how they show dialog to edit a contact. Keep in mind new page can't use ```regions.dialog```!
+See how they show dialog to edit a contact.
 
 ```
 contactsListView.on("childview:contact:edit", function(childView, args){
-	require(["apps/contacts/edit/edit_view"], function(EditView){
-
-		...
-
-		ContactManager.regions.dialog.show(view);
-	});
+	...
+	ContactManager.regions.dialog.show(view);
 });
 ```
 
@@ -92,9 +88,7 @@ In view you can use this magic to get the svg on right place :)
 onRender: function() {
 	var $graph = this.$el.find('.graph');
 	var svg = d3.select($graph).append("svg");
-
 	...
-	
 }
 
 ```
