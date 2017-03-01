@@ -5,7 +5,7 @@ ContactManager.module("ContactsApp.List", function(List, ContactManager, Backbon
       ContactManager.regions.main.show(loadingView);
 
       var fetchingContacts = ContactManager.request("contact:entities");
-
+      
       var contactsListLayout = new List.Layout();
       var contactsListPanel = new List.Panel();
 
@@ -17,7 +17,8 @@ ContactManager.module("ContactsApp.List", function(List, ContactManager, Backbon
             return function(contact){
               if(contact.get("firstName").toLowerCase().indexOf(criterion) !== -1
                 || contact.get("lastName").toLowerCase().indexOf(criterion) !== -1
-                || contact.get("phoneNumber").toLowerCase().indexOf(criterion) !== -1){
+                || contact.get("phoneNumber").toLowerCase().indexOf(criterion) !== -1
+                || contact.get("gender").toLowerCase().indexOf(criterion) !== -1){
                   return contact;
               }
             };
@@ -30,11 +31,11 @@ ContactManager.module("ContactsApp.List", function(List, ContactManager, Backbon
             contactsListPanel.triggerMethod("set:filter:criterion", criterion);
           });
         }
-
+        
         var contactsListView = new List.Contacts({
           collection: filteredContacts
         });
-
+        
         contactsListPanel.on("contacts:filter", function(filterCriterion){
           filteredContacts.filter(filterCriterion);
           ContactManager.trigger("contacts:filter", filterCriterion);
@@ -43,6 +44,10 @@ ContactManager.module("ContactsApp.List", function(List, ContactManager, Backbon
         contactsListLayout.on("show", function(){
           contactsListLayout.panelRegion.show(contactsListPanel);
           contactsListLayout.contactsRegion.show(contactsListView);
+        });
+
+        contactsListPanel.on("contact:graph", function(){
+          ContactManager.trigger("contact:graph");
         });
 
         contactsListPanel.on("contact:new", function(){
