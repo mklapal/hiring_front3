@@ -5,11 +5,15 @@ ContactManager.module("Entities", function(Entities, ContactManager, Backbone, M
     defaults: {
       firstName: "",
       lastName: "",
-      phoneNumber: ""
+      phoneNumber: "",
+      gender: ""
     },
 
     validate: function(attrs, options) {
       var errors = {}
+      if (! attrs.gender) {
+        errors.gender = "must choose gender";
+      }
       if (! attrs.firstName) {
         errors.firstName = "can't be blank";
       }

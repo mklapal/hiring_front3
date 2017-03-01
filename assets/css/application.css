@@ -1,3 +1,33 @@
 body {
   padding-top: 60px; /* 60px to make the container make room for the navigation bar */
 }
+
+.graph-ctn {
+  text-align: center;
+}
+
+.bg-blue {
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.bg-pink {
+  width: 10px;
+  height: 10px;
+  background-color: pink;
+  margin-left: 5px;
+}
+
+.flexbox-center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}

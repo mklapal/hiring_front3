@@ -21,6 +21,10 @@ ContactManager.module("ContactsApp", function(ContactsApp, ContactManager, Backb
     editContact: function(id){
       ContactsApp.Edit.Controller.editContact(id);
       ContactManager.execute("set:active:header", "contacts");
+    },
+
+    graphContact: function() {
+      ContactsApp.Graph.Controller.showGraph();
     }
   };
 
@@ -46,6 +50,11 @@ ContactManager.module("ContactsApp", function(ContactsApp, ContactManager, Backb
   ContactManager.on("contact:edit", function(id){
     ContactManager.navigate("contacts/" + id + "/edit");
     API.editContact(id);
+  });
+
+  ContactManager.on("contact:graph", function(id){
+    ContactManager.navigate("/graph");
+    API.graphContact();
   });
 
   ContactsApp.on("start", function(){

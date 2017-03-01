@@ -39,6 +39,7 @@
         <tr>
           <th>First Name</th>
           <th>Last Name</th>
+          <th>Gender</th>
           <th></th>
         </tr>
       </thead>
@@ -53,6 +54,7 @@
     <script type="text/template" id="contact-list-item">
       <td><%- firstName %></td>
       <td><%- lastName %></td>
+      <td><%- gender %></td>
       <td>
         <a href="#contacts/<%- id %>" class="btn btn-small js-show">
           <i class="icon-eye-open"></i>
@@ -80,6 +82,7 @@
         Edit this contact
       </a>
       <p><strong>Phone number:</strong> <%- phoneNumber %></p>
+      <p><strong>Gender:</strong> <%- gender %></p>
     </script>
 
     <script type="text/template" id="loading-view">
@@ -102,6 +105,13 @@
           <label for="contact-phoneNumber" class="control-label">Phone number:</label>
           <input id="contact-phoneNumber" name="phoneNumber" type="text" value="<%- phoneNumber %>"/>
         </div>
+        <div class="control-group">
+            <select id="contact-gender" name="gender" value="<%- gender %>">
+              <option value="" disabled="disabled" selected="selected">Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+        </div>
         <button class="btn js-submit">Save</button>
       </form>
     </script>
@@ -113,6 +123,7 @@
 
     <script type="text/template" id="contact-list-panel">
       <button class="btn btn-primary js-new">New contact</button>
+      <button class="btn btn-primary js-gender-graph">Gender Graph</button>
       <form id="filter-form" class="form-search form-inline pull-right">
         <div class="input-append">
           <input type="text" class="span2 search-query js-filter-criterion">
@@ -127,6 +138,21 @@
       <p>Hopefully, it has served you well !</p>
     </script>
 
+    <script type="text/template" id="graph-view">
+      <h1>Gender distribution</h1>
+      <div class="flexbox-center">
+        <div class="flex-center">
+          <p>Male</p>
+          <div class="bg-blue"></div>
+        </div>
+        <div class="flex-center">
+          <p>Female</p>
+          <div class="bg-pink"></div>
+        </div>
+      </div>
+      
+    </script>
+
     <script src="./assets/js/vendor/jquery.js"></script>
     <script src="./assets/js/vendor/jquery-ui-1.10.3.js"></script>
     <script src="./assets/js/vendor/json2.js"></script>
@@ -138,6 +164,7 @@
     <script src="./assets/js/vendor/backbone.marionette.js"></script>
     <script src="./assets/js/vendor/spin.js"></script>
     <script src="./assets/js/vendor/spin.jquery.js"></script>
+    <script src="./assets/js/vendor/d3.min.js"></script>
 
     <script src="./assets/js/app.js"></script>
     <script src="./assets/js/apps/config/storage/localstorage.js"></script>
@@ -155,6 +182,8 @@
     <script src="./assets/js/apps/contacts/edit/edit_view.js"></script>
     <script src="./assets/js/apps/contacts/edit/edit_controller.js"></script>
     <script src="./assets/js/apps/contacts/new/new_view.js"></script>
+    <script src="./assets/js/apps/contacts/graph/graph_controller.js"></script>
+    <script src="./assets/js/apps/contacts/graph/graph_view.js"></script>
 
     <script src="./assets/js/apps/about/about_app.js"></script>
     <script src="./assets/js/apps/about/show/show_view.js"></script>
